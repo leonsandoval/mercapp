@@ -13,7 +13,7 @@ def register(request):
         form = CustomCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            variables['mensaje']= "Usuario Credo"
+            variables['mensaje']= "Usuario Creado"
         else:
             variables['mensaje']= "No se ha registrado el Usuario"
             variables['form']= form

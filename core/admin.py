@@ -15,7 +15,11 @@ class RegionAdmin(admin.ModelAdmin):
 class CiudadAdmin(admin.ModelAdmin):
     list_display = ('id','nombre','id_region')
 
+class EstadoTiendaAdmin(admin.ModelAdmin):
+    list_display = ('id','nombre')    
+
 admin.site.register(Producto, ProductoAdmin)
 admin.site.register(Detalle_Producto, DetProductoAdmin)
 admin.site.register(Region, RegionAdmin)
 admin.site.register(Ciudad, CiudadAdmin)
+admin.site.register(Estado_tienda, EstadoTiendaAdmin)

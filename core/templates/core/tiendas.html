@@ -4,6 +4,83 @@
 
 {% block contenidoprincipal %}
 
+<section class="container">
+    <div class="row">
+      {% csrf_token %}
+        <div class="subtitle-section col s12 m8 offset-m2">
+            <h3 class="grey-title">Registro de Tiendas</h3>
+        </div>
+
+        <form  method="post" id="formulario1" class="contacto-form col s12 m8 offset-m2" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="input-field col s12">
+          <input name="txtNombre" id="txtNombre" type="text" class="validate" maxlength="25">
+          <label for="txtNombre">Nombre</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input name="txtNombreSucursal" id="txtNombreSucursal" type="text" class="validate" maxlength="25">
+          <label for="txtNombreSucursal">Nombre de la Sucursal</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input name="txtDireccion" id="txtDireccion" type="text" class="validate" maxlength="25">
+          <label for="txtDireccion">Direccion</label>
+        </div>
+
+        <div class="input-field col s12 m6">
+            <select id="cboCiudad" name="cboCiudad">
+                <option value="">Seleccionar</option>
+                {% for c in ciudad %}
+                    <option value="{{ c.id }}">{{ c.nombre }}</option>
+                {% endfor %}
+            </select>
+            <label for="cboCiudad">Ciudad</label>
+        </div>
+ 
+        <div class="input-field col s12">
+            <textarea id="txtWeb" name="txtWeb" class="materialize-textarea" maxlength="200"></textarea>
+            <label for="txtWeb">Sitio Web</label>
+        </div>
+
+        <div class="input-field col s12 m6">
+            <select id="cboEstado" name="cboEstado">
+                <option value="">Seleccionar</option>
+                {% for e in estado %}
+                    <option value="{{ e.id }}">{{ e.nombre }}</option>
+                {% endfor %}
+            </select>
+            <label for="cboEstado">Estado del producto</label>
+        </div>        
+
+        <div class="input-field col s12 m6">
+            <select id="cboUsuario" name="cboUsuario">
+                <option value="">Seleccionar</option>
+                {% for u in usuario %}
+                    <option value="{{ u.id }}">{{ u.name }}</option>
+                {% endfor %}
+            </select>
+            <label for="cboUsuario">Usuario </label>
+        </div>    
+
+        {% comment %} <div class="file-field input-field col s12">
+            <div class="btn">
+                <span for="imgFoto"><i class="material-icons left"></i> Foto</span>
+                <input type="file" name="imgFoto" id="imgFoto" size="2mb">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div> {% endcomment %}
+
+        <button class="btn waves-effect waves-light" type="submit" name="btnGuardarM" id="btnGuardarM">Registrar
+            <i class="material-icons right">send</i>
+        </button>
+        <h3>{{ mensaje }}</h3>
+    </form>
+
+    </div>
+</section>
 
 
 {% endblock contenidoprincipal %}

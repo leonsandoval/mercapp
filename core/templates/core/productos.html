@@ -13,10 +13,10 @@
 
         <form  method="post" id="formulario1" class="contacto-form col s12 m8 offset-m2" action="" enctype="multipart/form-data">
             {% csrf_token %}
-        <div class="input-field col s12">
+        {% comment %} <div class="input-field col s12">
           <input name="txtNombre" id="txtNombre" type="text" class="validate" maxlength="50">
           <label for="txtNombre">Nombre</label>
-        </div>
+        </div> {% endcomment %}
 
         <div class="input-field col s12 m6">
             <select id="cboTienda" name="cboTienda">

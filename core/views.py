@@ -7,15 +7,15 @@ from django.conf import settings
 # Create your views here.
 
 def home(request):
-    return render(request, 'core/home.html', 
+    return render(request, 'core/home.html',
     )
 
 def listas(request):
-    return render(request, 'core/listas.html', 
+    return render(request, 'core/listas.html',
     )
 
 def detalle(request):
-    return render(request, 'core/detalle.html', 
+    return render(request, 'core/detalle.html',
     )
 
 def productos(request):
@@ -29,7 +29,7 @@ def productos(request):
     if request.POST:
         detProducto = Detalle_Producto()
         producto = Producto()
-        producto.nombre = request.POST.get(txtNombre)
+        # producto.nombre = request.POST.get(txtNombre)
         tienda = Tienda()
         tienda.id = request.POST.get(cboTienda)
         detProducto.nota_adicional = request.POST.get(txtNotaAdicional)
@@ -44,5 +44,39 @@ def productos(request):
         except:
             variables['mensaje'] = "No se ha podido guardar"
 
-    return render(request, 'core/productos.html',variables 
+    return render(request, 'core/productos.html',variables
+    )
+
+def tiendas(request):
+    ciudad = Ciudad.objects.all()
+    estado = Estado_tienda.objects.all()
+    usuario = User.objects.all()
+    variables = {
+        'ciudad':ciudad,
+        'estado':estado
+        # 'usuario':usuario
+    }
+
+    if request.POST:
+        tienda = Tienda()
+        tienda.nombre = request.POST.get(txtNombre)
+        tienda.nombre_sucursal = request.POST.get(txtNombreSucursal)
+        tienda.direccion = request.POST.get(txtDireccion)
+        ciudad=Ciudad()
+        ciudad.id=request.POST.get(cboCiudad)
+        tienda.website = request.POST.get(txtWeb)
+        estado=Estado_tienda()
+        estado.id=request.POST.get(cboEstado)
+        usuario=User()
+        usuario.id=request.POST.get(cboUsuario)
+
+
+        try:
+            producto.save()
+            detProducto.save()
+            variables['mensaje'] = "Guardado correctamente"
+        except:
+            variables['mensaje'] = "No se ha podido guardar"
+
+    return render(request, 'core/tiendas.html',variables
     )
