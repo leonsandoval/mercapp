@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load pwa %}
+<head>
+
+    {% progressive_web_app_meta %}
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MercApp</title>
+    {% load static %} 
+    
+</head>
+<body>
+ 
+    <header>
+   
+
+        <ul id="slide-out" class="sidenav">
+            <li><a href="/">Inicio</a></li>
+            <li><a href="">Quienes somos</a></li>
+            <li><a href="/galeria">Galeria</a></li>
+            <li><a href="/regmascota">Registra tu mascota</a></li>
+
+            {% if request.user.is_autenticated %}
+            <li><a href="{% url 'logout'  %}">Cerrar Sesion</a></li>
+            <li>
+                <a href="">{{ request.user.first_name }}</a>
+            </li>
+
+            {% else %}
+
+            <li>
+                <a href="{% url 'login' %}">Login</a>
+            </li>
+            <li>
+                <a href="{% url 'register' %}"></a>
+            </li>
+            {% endif %}
+        </ul>
+
+    </header>
+
+    {% block contenidoprincipal %}
+
+    {% endblock contenidoprincipal %}
+
+    {% block contenido %}
+    
+    {% endblock contenido %}
+ 
+ 
+    <footer >
+    <div class="container">
+        <div class="row">
+        <div class="col s12 copyright">
+        Copyright © Todos los derechos reservados 2018</div>
+             
+                <ul class="RRSS col s12 m6">
+                    <li>
+                        <img src="{% static 'core/img/socialfacebook.png' %}" alt="img-facebook">
+                    </li>
+                    <li>
+                        <img src="{% static 'core/img/googleplus.png' %}" alt="img-plus">
+                    </li>
+                    <li>
+                        <img src="{% static 'core/img/social-inst.png' %}" alt="img-instragram">
+                    </li>
+                    <li>
+                        <img src="{% static 'core/img/mail.png' %}" alt="img-correo">
+                    </li>
+                </ul>
+        </div>
+    </div>
+
+    </footer>
+</body>
+</html>

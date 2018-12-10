@@ -69,7 +69,9 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'accounts',
     'social_django',
-]
+    # 'api',
+    'pwa',
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -87,7 +89,10 @@ ROOT_URLCONF = 'mercapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates/')
+        ],
+        
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -163,3 +168,15 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'serviceworker.js')
+
+PWA_APP_NAME = "MisPerris_APP"
+
+PWA_APP_ICONS = [
+{
+    'src':'/static/core/img/patita-de-perro-1.png',
+    'sizes':'160x160'
+}
+
+]
