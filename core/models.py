@@ -51,7 +51,7 @@ class Tienda(models.Model):
     id_ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
     website = models.CharField(max_length=50)
     id_estado = models.ForeignKey(Estado_tienda, on_delete=models.CASCADE)
-    id_estado = models.ForeignKey(User, on_delete=models.CASCADE)
+    id_usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre

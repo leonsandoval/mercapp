@@ -1,0 +1,82 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block contenidoprincipal %}
+
+<section class="container">
+    <div class="row">
+      {% csrf_token %}
+        <div class="subtitle-section col s12 m8 offset-m2">
+            <h3 class="grey-title">Registro de Productos</h3>
+        </div>
+
+        <form  method="post" id="formulario1" class="contacto-form col s12 m8 offset-m2" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="input-field col s12">
+          <input name="txtNombre" id="txtNombre" type="text" class="validate" maxlength="50">
+          <label for="txtNombre">Nombre</label>
+        </div>
+
+        <div class="input-field col s12 m6">
+            <select id="cboTienda" name="cboTienda">
+                <option value="">Seleccionar</option>
+                {% for t in tienda %}
+                    <option value="{{ t.id }}">{{ t.nombre }}</option>
+                {% endfor %}
+            </select>
+            <label for="cboTienda">Tienda</label>
+        </div>
+ 
+        <div class="input-field col s12">
+            <textarea id="txtNotaAdicional" name="txtNotaAdicional" class="materialize-textarea" maxlength="200"></textarea>
+            <label for="txtNotaAdicional">Nota Adicional</label>
+        </div>
+
+        <div class="input-field col s12">
+            <textarea id="txtCostoReal" name="txtCostoReal" class="materialize-textarea" maxlength="200"></textarea>
+            <label for="txtCostoReal">Costo Real</label>
+        </div>
+
+        <div class="input-field col s12 m6">
+            <select id="cboProducto" name="cboProducto">
+                <option value="">Seleccionar</option>
+                {% for p in producto %}
+                    <option value="{{ p.id }}">{{ p.nombre }}</option>
+                {% endfor %}
+            </select>
+            <label for="cboProducto">Producto</label>
+        </div>        
+
+        <div class="input-field col s12 m6">
+            <input type="date" class="datepicker" name="txtFecValoriza" id="txtFecValoriza">
+            <label for="txtFecValoriza">Fecha de valorizacion</label>
+        </div>
+
+        {% comment %} <div class="file-field input-field col s12">
+            <div class="btn">
+                <span for="imgFoto"><i class="material-icons left"></i> Foto</span>
+                <input type="file" name="imgFoto" id="imgFoto" size="2mb">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div> {% endcomment %}
+
+        <button class="btn waves-effect waves-light" type="submit" name="btnGuardarM" id="btnGuardarM">Registrar
+            <i class="material-icons right">send</i>
+        </button>
+        <h3>{{ mensaje }}</h3>
+    </form>
+
+    </div>
+</section>
+
+{% endblock contenidoprincipal %}
+
+
+{% block contenido %}
+
+contenido de productos
+
+{% endblock contenido %} 
