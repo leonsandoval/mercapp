@@ -41,8 +41,8 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # Application definition
 
-SOCIAL_AUTH_FACEBOOK_KEY = '711790159193212'  #sacar de facebook
-SOCIAL_AUTH_FACEBOOK_SECRET = '3039c652e87631a3711b6bc7e7c10fdd' #sacar de facebook
+SOCIAL_AUTH_FACEBOOK_KEY = '577555385990841'  #sacar de facebook
+SOCIAL_AUTH_FACEBOOK_SECRET = '94ce704c5c678dbc79d49b6d182d12e0' #sacar de facebook
 
 
 TEMPLATES = [
