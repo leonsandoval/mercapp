@@ -4,13 +4,36 @@
 
 {% block contenidoprincipal %}
 
-Super contenido Principal
-
+<div class="carousel carousel-slider">
+    <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"></a>
+    <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"></a>
+    <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"></a>
+    <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"></a>
+</div>
+        
 {% endblock contenidoprincipal %}
 
 
 {% block contenido %}
-
-contenido normal...
+<div class="container">
+ <div class="row">
+ <h2 class="text-center"> Nuevos Productos </h2>
+    <!--INicio producto hay que hacer un foreach -->
+    <div class="col s12 m4">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://materializecss.com/images/sample-1.jpg">
+          <span class="card-title">Nomre producto</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+          <p>Nombre tienda</p>
+          <p>Valor</p>
+        </div>
+      </div>
+    </div>
+    <!-- fin -->
+  </div>
+</div>
 
 {% endblock contenido %} 
