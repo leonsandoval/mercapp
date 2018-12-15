@@ -80,3 +80,31 @@ def tiendas(request):
 
     return render(request, 'core/tiendas.html',variables
     )
+
+
+def listas(request):
+    lista = Lista.objects.all()
+    variables = {
+        'lista':lista,
+    }
+
+    if request.POST:
+        detProducto = Detalle_Producto()
+        producto = Producto()
+        # producto.nombre = request.POST.get(txtNombre)
+        tienda = Tienda()
+        tienda.id = request.POST.get(cboTienda)
+        detProducto.nota_adicional = request.POST.get(txtNotaAdicional)
+        detProducto.costo_real = request.POST.get(txtCostoReal)
+        producto.id =request.POST.get(cboProducto)
+        detProducto.fecha_valorizacion = request.POST.get(txtFecValoriza)
+
+        try:
+            producto.save()
+            detProducto.save()
+            variables['mensaje'] = "Guardado correctamente"
+        except:
+            variables['mensaje'] = "No se ha podido guardar"
+
+    return render(request, 'core/productos.html',variables
+    )
