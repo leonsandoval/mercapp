@@ -16,6 +16,79 @@
     <script src="{% static 'core/js/materialize.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
     <script src="{% static 'core/js/script.js' %}"></script>
+
+    <script src="https://www.gstatic.com/firebase/5.5.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-messaging.js"></script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+<script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDAS6XZPTpwA3Rec7YgY-hUUwhsFk7MNZc",
+            authDomain: "listacompras-95ed0.firebaseapp.com",
+            databaseURL: "https://listacompras-95ed0.firebaseio.com",
+            projectId: "listacompras-95ed0",
+            storageBucket: "listacompras-95ed0.appspot.com",
+            messagingSenderId: "398111472243"
+        };
+
+        firebase.initializeApp(config);
+
+
+        const messaging = firebase.messaging();
+
+   
+        navigator
+            .serviceWorker
+            .register('./serviceworker.js')
+            .then(function (register) {
+
+                messaging.useServiceWorker(register);
+
+
+                messaging
+                    .requestPermission()
+                    .then(function () {
+                        console.log("el usuario ha aceptado")
+                        return messaging.getToken();
+                    })
+                    .then(function (token) {
+                        console.log(token)
+
+
+                        fetch('api/crear-token/', {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                'token': token
+                            })
+                        })
+                            .then(function () {
+                                console.log("token enviado")
+                            })
+
+                    })
+                    .catch(function (error) {
+                        console.error("el usuario no ha aceptado " + error)
+                    })
+
+            })
+
+        messaging.onMessage(function (payload) {
+
+            console.log(payload)
+
+            var options = {
+                body: payload.notification.body,
+                icon: payload.notification.icon
+            }
+
+
+            var mensaje =
+                new Notification(payload.notification.title, options)
+        })
+
+    </script>
 </head>
 <body>
     <header>
