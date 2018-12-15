@@ -10,9 +10,9 @@ def home(request):
     return render(request, 'core/home.html',
     )
 
-def listas(request):
-    return render(request, 'core/listas.html',
-    )
+# def listas(request):
+#     return render(request, 'core/listas.html',
+#     )
 
 def detalle(request):
     return render(request, 'core/detalle.html',
@@ -89,15 +89,13 @@ def listas(request):
     }
 
     if request.POST:
-        detProducto = Detalle_Producto()
-        producto = Producto()
+        lista = Lista()
         # producto.nombre = request.POST.get(txtNombre)
-        tienda = Tienda()
-        tienda.id = request.POST.get(cboTienda)
-        detProducto.nota_adicional = request.POST.get(txtNotaAdicional)
-        detProducto.costo_real = request.POST.get(txtCostoReal)
-        producto.id =request.POST.get(cboProducto)
-        detProducto.fecha_valorizacion = request.POST.get(txtFecValoriza)
+
+        lista.nombre = request.POST.get(txtNombre)
+        lista.cant_productos = request.POST.get(txtCantProd)
+        lista.total_presupuestado =request.POST.get(txtTotalPres)
+        lista.total_real = request.POST.get(txtTotalReal)
 
         try:
             producto.save()
@@ -106,5 +104,5 @@ def listas(request):
         except:
             variables['mensaje'] = "No se ha podido guardar"
 
-    return render(request, 'core/productos.html',variables
+    return render(request, 'core/listas.html',variables
     )
