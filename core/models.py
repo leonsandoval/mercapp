@@ -31,7 +31,9 @@ class Estado_tienda(models.Model):
 
 class Region(models.Model):
     nombre = models.CharField(max_length=25)
-        
+
+    class Meta:
+        verbose_name_plural = 'Regiones'         
     def __str__(self):
         return self.nombre
 
@@ -39,7 +41,9 @@ class Region(models.Model):
 class Ciudad(models.Model):
     nombre = models.CharField(max_length=25)
     id_region = models.ForeignKey(Region, on_delete=models.CASCADE)
-        
+    
+    class Meta:
+        verbose_name_plural = 'Ciudades'        
     def __str__(self):
         return self.nombre
 

@@ -18,8 +18,12 @@ class CiudadAdmin(admin.ModelAdmin):
 class EstadoTiendaAdmin(admin.ModelAdmin):
     list_display = ('id','nombre')    
 
+class TiendaAdmin(admin.ModelAdmin):
+    list_display = ('nombre','nombre_sucursal' ,'direccion','id_ciudad' ,'website','id_estado' ,'id_usuario')
+
 admin.site.register(Producto, ProductoAdmin)
 admin.site.register(Detalle_Producto, DetProductoAdmin)
 admin.site.register(Region, RegionAdmin)
 admin.site.register(Ciudad, CiudadAdmin)
 admin.site.register(Estado_tienda, EstadoTiendaAdmin)
+admin.site.register(Tienda, TiendaAdmin)
