@@ -28,17 +28,18 @@ def productos(request):
 
     if request.POST:
         detProducto = Detalle_Producto()
-        producto = Producto()
-        # producto.nombre = request.POST.get(txtNombre)
+        detProducto.nota_adicional = request.POST.get('txtNotaAdicional')
+        detProducto.costo_real = request.POST.get('txtCostoReal')
+        detProducto.fecha_valorizacion = request.POST.get('txtFecValoriza')
         tienda = Tienda()
-        tienda.id = request.POST.get(cboTienda)
-        detProducto.nota_adicional = request.POST.get(txtNotaAdicional)
-        detProducto.costo_real = request.POST.get(txtCostoReal)
-        producto.id =request.POST.get(cboProducto)
-        detProducto.fecha_valorizacion = request.POST.get(txtFecValoriza)
+        tienda.id = request.POST.get('cboTienda')
+        detProducto.id_tienda = tienda
 
+        producto = Producto()
+        producto.id = request.POST.get('cboProducto')
+        detProducto.id_producto = producto
+        
         try:
-            producto.save()
             detProducto.save()
             variables['mensaje'] = "Guardado correctamente"
         except:
@@ -104,5 +105,21 @@ def listas(request):
         except:
             variables['mensaje'] = "No se ha podido guardar"
 
-    return render(request, 'core/listas.html',variables
-    )
+    return render(request, 'core/tiendas.html',variables)
+
+def detalleLista(request, id):
+    lista = Lista.objects.filter(id_usuario=id)
+    producto = Producto.objects.all()
+    
+    variables = {
+       'list':lista,
+       'product': producto
+    }
+
+
+    return render(request, 'core/agregar_producto.html',variables)
+
+# def cargarProducto()
+#     infoProduct = Producto.objects.filter(id=id)
+#         print(infoProduct)
+

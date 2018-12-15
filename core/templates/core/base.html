@@ -92,6 +92,7 @@
 </head>
 <body>
     <header>
+        
         <nav>
             <div class="nav-wrapper">
                 <div class="container">
@@ -101,10 +102,10 @@
                         <li><a href="/">Inicio</a></li>
                         <li><a href="/listas">Listas</a></li>
                         <li><a href="/productos">Productos</a></li>
-                        <li><a href="/tiendas">tiendas</a></li>
-                        {% if request.user.is_autenticated %}
-                        <li><a href="{% url 'logout'  %}">Cerrar Sesion</a></li>
-                        <li><a href="">{{ request.user.first_name }}</a></li>
+                        <li><a href="/tiendas">Tiendas</a></li>
+                        {% if request.user.is_authenticated %}
+                            <li><a href="{% url 'logout'  %}">Cerrar Sesion</a></li>
+                            <li><a href="">Hola {{ request.user.username }}</a></li>
                         {% else %}
                         <li><a href="{% url 'login' %}">Iniciar Sesion</a></li>
                         <li><a href="{% url 'register' %}">Registrate</a></li>
@@ -118,15 +119,15 @@
             <li><a href="/">Inicio</a></li>
             <li><a href="/listas">Listas</a></li>
             <li><a href="/productos">Productos</a></li>
-            <li><a href="/tiendas">tiendas</a></li>
-            {% if request.user.is_autenticated %}
+            <li><a href="/tiendas">Tiendas</a></li>
+            {% if request.user.is_authenticated %}
             <li><a href="{% url 'logout'  %}">Cerrar Sesion</a></li>
             <li><a href="">{{ request.user.first_name }}</a></li>
             {% else %}
             <li><a href="{% url 'login' %}">Iniciar Sesion</a></li>
             <li><a href="{% url 'register' %}">Registrate</a></li>
             {% endif %}
-        </ul>
+        </ul>        
     </header>
     <section class="contenedor-principal">    
             {% block contenidoprincipal %}

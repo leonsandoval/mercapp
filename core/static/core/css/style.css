@@ -1,3 +1,17 @@
 .contenedor-principal {
     min-height: 500px;
 }
+.menu {
+    height: 30px;
+    background: #26a69a;
+}
+.menu .tabs .tab a {
+    font-size: 12px;
+}
+.menu .tabs .tab {
+    line-height: 30px;
+    height: 30px;
+}
+.menu .tabs {
+    height: 30px;
+}

@@ -1,0 +1,64 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block contenidoprincipal %}
+{% if request.user.is_authenticated %}
+<nav class="menu">
+    <div class="container">
+        <ul class="tabs tabs-transparent">
+            <li class="tab"><a href="/listas">Crear Lista</a></li>
+            <li class="tab"><a href="/producto-add/{{ request.user.id }}">Agregar Producto</a></li>
+        </ul>
+    </div>
+</nav>
+{% endif %}                    
+
+<section class="container">
+    <div class="row">
+      {% csrf_token %}
+        <div class="subtitle-section col s12 m8 offset-m2">
+            <h3 class="grey-title">Registro de Listas</h3>
+        </div>
+
+        <form  method="post" id="formulario1" class="contacto-form col s12 m8 offset-m2" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="input-field col s12 m6">
+                <select id="cboList" name="cboList">
+                    <option value="" disabled selected>Seleccionar</option>
+                    {% for l in list %}
+                        <option value="{{ l.id }}">{{ l.nombre }}</option>
+                    {% endfor %}
+                </select>
+                <label>Mis Listas</label>
+            </div>
+            <div class="input-field col s12 m6">
+                <select id="cboProduct" name="cboProduct">
+                    <option value="" disabled selected>Seleccionar</option>
+                    {% for p in product %}
+                        <option value="{{ p.id }}" >{{ p.nombre }}</option>
+                    {% endfor %}
+                </select>
+                <label>Seleccionar producto</label>
+            </div>
+
+            <div class="input-field col s12 m4">
+                <input id="txtTotalReal" type="number" value="" name="txtTotalReal" class="validate" maxlength="7"></input>
+                <label for="txtTotalReal">Total Real</label>
+            </div>
+
+    
+
+
+       
+
+
+
+
+        </form>
+    </div>
+</section>
+
+{% endblock contenidoprincipal %}
+

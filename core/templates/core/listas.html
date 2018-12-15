@@ -3,7 +3,16 @@
 {% load static %}
 
 {% block contenidoprincipal %}
-
+{% if request.user.is_authenticated %}
+<nav class="menu">
+    <div class="container">
+        <ul class="tabs tabs-transparent">
+            <li class="tab"><a href="/listas">Crear Lista</a></li>
+            <li class="tab"><a href="/producto-add/{{ request.user.id }}">Agregar Producto</a></li>
+        </ul>
+    </div>
+</nav>
+{% endif %}      
 <section class="container">
     <div class="row">
       {% csrf_token %}
@@ -18,22 +27,22 @@
           <label for="txtNombre">Nombre</label>
         </div> 
          
-        <div class="input-field col s12">
-            <textarea id="txtCantProd" type="number" name="txtCantProd" class="validate" maxlength="3"></textarea>
+        <div class="input-field col s12 m4">
+            <input id="txtCantProd" type="number" name="txtCantProd" class="validate" maxlength="3"></input>
             <label for="txtCantProd">Cantidad de Productos</label>
         </div>
 
-        <div class="input-field col s12">
-            <textarea id="txtTotalPres" type="number" name="txtTotalPres" class="validate" maxlength="7"></textarea>
+        <div class="input-field col s12 m4">
+            <input id="txtTotalPres" type="number" name="txtTotalPres" class="validate" maxlength="7"></input>
             <label for="txtTotalPres">Total Presupuestado</label>
         </div>
 
-        <div class="input-field col s12">
-            <textarea id="txtTotalReal" type="number" name="txtTotalReal" class="validate" maxlength="7"></textarea>
+        <div class="input-field col s12 m4">
+            <input id="txtTotalReal" type="number" name="txtTotalReal" class="validate" maxlength="7"></input>
             <label for="txtTotalReal">Total Real</label>
         </div>
 
-        <button class="btn waves-effect waves-light" type="submit" name="btnGuardarM" id="btnGuardarM">Guardar
+        <button class="btn waves-effect waves-light" type="submit" name="btnGuardarM" id="btnGuardarM">Crear
             <i class="material-icons right">send</i>
         </button>
 
@@ -98,18 +107,9 @@
                  
                 </td>
             </tr>
-
-
             {% endfor %}
-
         </tbody>
-
-
-
     </table>
-
-
-
 </div>
 
 {% endblock contenido %} 

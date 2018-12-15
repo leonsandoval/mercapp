@@ -4,6 +4,10 @@ $(document).ready(function(){
 
     $('.carousel.carousel-slider').carousel({
         fullWidth: true
-      });
-      $('select').formSelect();
+    });
+    $('select').formSelect();
+    $('.datepicker').datepicker({
+        selectMonths: true, // Creates a dropdown to control month
+        format: 'dd-mm-yyyy'    
+    });
 });

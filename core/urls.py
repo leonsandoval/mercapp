@@ -9,4 +9,5 @@ urlpatterns = [
     path('listas/', listas, name="listas"),
     path('productos/', productos, name="productos"),
     path('tiendas/', tiendas, name="tiendas"),
+    path('producto-add/<id>/', detalleLista, name="producto-add"),
 ]
