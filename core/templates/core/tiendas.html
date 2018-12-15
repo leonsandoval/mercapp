@@ -1,7 +1,5 @@
 {% extends 'core/base.html' %}
 
-{% load static %}
-
 {% block contenidoprincipal %}
 
 <section class="container">
@@ -30,17 +28,17 @@
 
         <div class="input-field col s12 m6">
             <select id="cboCiudad" name="cboCiudad">
-                <option value="">Seleccionar</option>
-                {% for c in ciudad %}
-                    <option value="{{ c.id }}">{{ c.nombre }}</option>
-                {% endfor %}
+            <option value="" disabled selected>Seleccionar</option>
+            {% for c in ciudad %}
+                <option value="{{ c.id }}">{{ c.nombre }}</option>
+            {% endfor %}
             </select>
-            <label for="cboCiudad">Ciudad</label>
+            <label>Ciudad</label>
         </div>
  
-        <div class="input-field col s12">
-            <textarea id="txtWeb" name="txtWeb" class="validate" maxlength="200"></textarea>
-            <label for="txtWeb">Sitio Web</label>
+        <div class="input-field col s12 m6">
+        <input name="txtWeb" id="txtWeb" type="text" class="validate" maxlength="200">
+          <label for="txtWeb">Sitio Web</label>
         </div>
 
         <div class="input-field col s12 m6">
